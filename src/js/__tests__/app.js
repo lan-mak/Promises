@@ -1,8 +1,11 @@
 import GameSavingLoader from '../GameSavingLoader';
 
-test('Проверка загрузки из файла сохранения', async () => {
-  const data = await GameSavingLoader.load();
+test('Проверка класса и наличия метода ', () => {
+  expect(GameSavingLoader).toBeDefined();
+  expect(GameSavingLoader.load).toBeDefined();
+});
 
+test('Проверка что создается объект', async () => {
   const testData = {
     id: 9,
     created: 1546300800,
@@ -11,5 +14,6 @@ test('Проверка загрузки из файла сохранения', a
     },
   };
 
-  expect(data).toEqual(testData);
+  const obj = await GameSavingLoader.load();
+  expect(obj).toEqual(testData);
 });
